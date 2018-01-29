@@ -20,29 +20,15 @@ namespace FileExplorer.Controllers
             return View();
         }
 
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public JsonResult getPopulation([FromBody] string path = null)
+        public JsonResult GetDirectories([FromBody] string path = null)
         {
             DirectoryInfo di = null;
-            if (path == null)
+            if (String.IsNullOrWhiteSpace(path))
             {
                 var os = System.Environment.OSVersion.Platform.ToString();
                 if (os == "Unix")
@@ -58,34 +44,36 @@ namespace FileExplorer.Controllers
             {
                 di = new DirectoryInfo(path);
             }
-
-            // Get a reference to each file in that directory.
-            var fiArr = di.GetFiles();
-            var dirArr = di.GetDirectories();
-
-            var files = new List<FileModel>();
-
-            foreach (DirectoryInfo dir in dirArr)
+            
+            if (di.Exists)
             {
-                files.Add(new FileModel
-                {
-                    Name = dir.FullName,
-                    Date = dir.CreationTime.ToString("d")
-                });
-            }
+                var fiArr = di?.GetFiles();
+                var dirArr = di?.GetDirectories();
 
-            foreach (FileInfo file in fiArr)
-            {
-                files.Add(new FileModel
-                {
-                    Name = file.FullName,
-                    Size = file.Length.ToString(),
-                    Date = file.CreationTime.ToString("d")
-                });
-            }
+                var files = new List<FileModel>();
 
-     
-            return Json(files);
+                foreach (DirectoryInfo dir in dirArr)
+                {
+                    files.Add(new FileModel
+                    {
+                        Name = dir.FullName,
+                        Date = dir.CreationTime.ToString("d")
+                    });
+                }
+
+                foreach (FileInfo file in fiArr)
+                {
+                    files.Add(new FileModel
+                    {
+                        Name = file.FullName,
+                        Size = file.Length.ToString(),
+                        Date = file.CreationTime.ToString("d")
+                    });
+                }
+                
+                return Json(files);
+            }
+            return null;
         }
     }
 }

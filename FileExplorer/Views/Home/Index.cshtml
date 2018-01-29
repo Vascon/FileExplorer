@@ -8,12 +8,12 @@
 <button onclick="getInfo(previous)">Back</button>
 
 
-<table id="tblPopulation">
+<table id="tblDirectories">
     <thead>
         <tr>
-            <td>Название</td>
-            <td>Размер</td>
-            <td>Дата</td>
+            <td>Name</td>
+            <td>Size</td>
+            <td>Date</td>
         </tr>
         <tr>
             <td>
@@ -42,7 +42,7 @@
         console.log(path)
      $.ajax({
 
-            url: '/Home/getPopulation',
+            url: '/Home/GetDirectories',
             dataType: "json",
             type: "POST",
             contentType: 'application/json; charset=utf-8',
@@ -70,13 +70,13 @@
                     $('body').on('click', id, function () { getInfo(name) });
                 }
                 console.log(tr)
-                $('#tblPopulation').append(tr);
+                $('#tblDirectories').append(tr);
 
     
                   tblFormate();
                 function tblFormate() {
 
-                var table = $('#tblPopulation').DataTable(
+                var table = $('#tblDirectories').DataTable(
                  {
                      //"searching": false,
                      "lengthMenu": [[5, 10, 50, 100, 150, -1], [5, 10, 50, 100, 150, "All"]]
