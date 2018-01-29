@@ -1,0 +1,11 @@
+/Users/vascon/Projects/FileExplorer/FileExplorer/bin/Debug/netcoreapp2.0/FileExplorer.deps.json
+/Users/vascon/Projects/FileExplorer/FileExplorer/bin/Debug/netcoreapp2.0/FileExplorer.runtimeconfig.json
+/Users/vascon/Projects/FileExplorer/FileExplorer/bin/Debug/netcoreapp2.0/FileExplorer.runtimeconfig.dev.json
+/Users/vascon/Projects/FileExplorer/FileExplorer/bin/Debug/netcoreapp2.0/FileExplorer.dll
+/Users/vascon/Projects/FileExplorer/FileExplorer/bin/Debug/netcoreapp2.0/FileExplorer.pdb
+/Users/vascon/Projects/FileExplorer/FileExplorer/obj/Debug/netcoreapp2.0/FileExplorer.csprojResolveAssemblyReference.cache
+/Users/vascon/Projects/FileExplorer/FileExplorer/obj/Debug/netcoreapp2.0/FileExplorer.csproj.CoreCompileInputs.cache
+/Users/vascon/Projects/FileExplorer/FileExplorer/obj/Debug/netcoreapp2.0/FileExplorer.AssemblyInfoInputs.cache
+/Users/vascon/Projects/FileExplorer/FileExplorer/obj/Debug/netcoreapp2.0/FileExplorer.AssemblyInfo.cs
+/Users/vascon/Projects/FileExplorer/FileExplorer/obj/Debug/netcoreapp2.0/FileExplorer.dll
+/Users/vascon/Projects/FileExplorer/FileExplorer/obj/Debug/netcoreapp2.0/FileExplorer.pdb

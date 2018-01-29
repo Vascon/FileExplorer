@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<link href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
+<h2>Ajax Table Columns Search</h2>
+<button onclick="getInfo(null)">Home</button>
+<button onclick="getInfo(previous)">Back</button>
+
+
+<table id="tblPopulation">
+    <thead>
+        <tr>
+            <td>Название</td>
+            <td>Размер</td>
+            <td>Дата</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" />
+            </td>
+            <td>
+                <input type="text" />
+            </td>
+            <td>
+                <input type="text"/>
+            </td>
+        </tr>
+    </thead>
+       
+</table>
+
+
+
+@section Scripts {
+<script src="//code.jquery.com/jquery-1.12.3.js"></script>
+<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script>
+   let previous;
+   function getInfo(path) {
+        console.log('get info')
+        console.log(path)
+     $.ajax({
+
+            url: '/Home/getPopulation',
+            dataType: "json",
+            type: "POST",
+            contentType: 'application/json; charset=utf-8',
+
+
+    
+            data: JSON.stringify(path),
+            success: function (data) {
+                console.log('success')
+                var tr;
+                console.log(data);
+                $("tr").remove();
+                for (var i = 0; i < data.length; i++) {
+                    tr = tr + '<tr id="' + data[i].name + '">';
+                    tr = tr + '<td>' + data[i].name + '</td>';
+                    tr = tr + '<td>' + data[i].size + '</td>';
+                    tr = tr + '<td>' + data[i].date + '</td>';
+                    tr = tr + '</tr>';
+                    let name = data[i].name;
+                    previous = name.split('/').slice(0,-2).join('/');   
+                    console.log('Prev', previous);
+    //console.log(name.replace(/\!|\"|\#|\$|\%|\&|\'|\(|\)|\*|\+|\,|\.|\/|\:|\;|\<|\=|\>|\?|\@@|\[|\]|\^|\`|\{|\||\}|\~/g, '\\$&'));
+                    id = "#"   + name.replace(/\!|\"|\#|\$|\%|\&|\'|\(|\)|\*|\+|\,|\.|\/|\:|\;|\<|\=|\>|\?|\@@|\[|\]|\^|\`|\{|\||\}|\~/g, '\\$&')
+                    $('body').on('click', id, function () { getInfo(name) });
+                }
+                console.log(tr)
+                $('#tblPopulation').append(tr);
+
+    
+                  tblFormate();
+                function tblFormate() {
+
+                var table = $('#tblPopulation').DataTable(
+                 {
+                     //"searching": false,
+                     "lengthMenu": [[5, 10, 50, 100, 150, -1], [5, 10, 50, 100, 150, "All"]]
+                 });
+                //Apply the search
+
+
+                table.columns().eq(0).each(function (colIdx) {
+                    $('input', table.column(colIdx).header()).on('keyup change', function () {
+                        table
+                            .column(colIdx)
+                            .search(this.value)
+                            .draw();
+                    });
+                });
+            }
+        
+
+            },
+            error: function (xhr) {
+                console.error(xhr);
+            }
+        });
+    }
+    $(document).ready(function () {
+        console.log('doc ready')
+
+        getInfo();
+
+    });
+
+
+
+</script>
+
+
+}
