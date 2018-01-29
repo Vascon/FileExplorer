@@ -53,6 +53,7 @@
             success: function (data) {
                 console.log('success')
                 var tr;
+                window.alert = function() { }; 
                 console.log(data);
                 $("tr").remove();
                 for (var i = 0; i < data.length; i++) {
