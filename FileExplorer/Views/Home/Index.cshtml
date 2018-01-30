@@ -3,9 +3,8 @@
     ViewBag.Title = "Index";
 }
 <link href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
-<h2>Ajax Table Columns Search</h2>
 <button onclick="getInfo(null)">Home</button>
-<button onclick="getInfo(previous)">Back</button>
+<button onclick="getInfo(previous)">Up</button>
 
 
 <table id="tblDirectories">
@@ -37,6 +36,8 @@
 <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script>
    let previous;
+   let tr;
+
    function getInfo(path) {
         console.log('get info')
         console.log(path)
@@ -51,25 +52,31 @@
     
             data: JSON.stringify(path),
             success: function (data) {
-                console.log('success')
-                var tr;
-                window.alert = function() { }; 
-                console.log(data);
-                $("tr").remove();
-                for (var i = 0; i < data.length; i++) {
-                    tr = tr + '<tr id="' + data[i].name + '">';
+
+                
+                window.alert = function() {}; 
+
+                $(".toDelete").remove();
+               var tr='<tr></tr>';
+
+              // var Table = document.getElementById("mytable");
+              //  Table.innerHTML = "";
+               
+                for (var i = 0; i < data.length; i++) 
+                {
+                    tr = tr + '<tr class="toDelete" onclick="getInfo(this.id)" id="' + data[i].name + '">';
                     tr = tr + '<td>' + data[i].name + '</td>';
                     tr = tr + '<td>' + data[i].size + '</td>';
                     tr = tr + '<td>' + data[i].date + '</td>';
                     tr = tr + '</tr>';
-                    let name = data[i].name;
-                    previous = name.split('/').slice(0,-2).join('/');   
-                    console.log('Prev', previous);
-    //console.log(name.replace(/\!|\"|\#|\$|\%|\&|\'|\(|\)|\*|\+|\,|\.|\/|\:|\;|\<|\=|\>|\?|\@@|\[|\]|\^|\`|\{|\||\}|\~/g, '\\$&'));
-                    id = "#"   + name.replace(/\!|\"|\#|\$|\%|\&|\'|\(|\)|\*|\+|\,|\.|\/|\:|\;|\<|\=|\>|\?|\@@|\[|\]|\^|\`|\{|\||\}|\~/g, '\\$&')
-                    $('body').on('click', id, function () { getInfo(name) });
+                    name = data[i].name;       
                 }
-                console.log(tr)
+
+                    if (path!=null)
+                    previous = path.split('\\').slice(0,-1).join('\\');
+                    else
+                    previous = data[0].name.split('\\').slice(0,-2).join('\\');   
+
                 $('#tblDirectories').append(tr);
 
     
@@ -78,10 +85,9 @@
 
                 var table = $('#tblDirectories').DataTable(
                  {
-                     //"searching": false,
+                    // "searching": false,
                      "lengthMenu": [[5, 10, 50, 100, 150, -1], [5, 10, 50, 100, 150, "All"]]
                  });
-                //Apply the search
 
 
                 table.columns().eq(0).each(function (colIdx) {

@@ -28,7 +28,7 @@ namespace FileExplorer.Controllers
         public JsonResult GetDirectories([FromBody] string path = null)
         {
             DirectoryInfo di = null;
-            if (String.IsNullOrWhiteSpace(path))
+            if (String.IsNullOrWhiteSpace(path) || path=="C:")
             {
                 var os = System.Environment.OSVersion.Platform.ToString();
                 if (os == "Unix")
@@ -37,7 +37,7 @@ namespace FileExplorer.Controllers
                 }
                 else
                 {
-                    di = new DirectoryInfo("c:\\");
+                    di = new DirectoryInfo(@"C:\");
                 }
             }
             else

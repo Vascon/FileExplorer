@@ -9,3 +9,14 @@
 /Users/vascon/Projects/FileExplorer/FileExplorer/obj/Debug/netcoreapp2.0/FileExplorer.AssemblyInfo.cs
 /Users/vascon/Projects/FileExplorer/FileExplorer/obj/Debug/netcoreapp2.0/FileExplorer.dll
 /Users/vascon/Projects/FileExplorer/FileExplorer/obj/Debug/netcoreapp2.0/FileExplorer.pdb
+c:\Users\VasilevK\Desktop\FileExplorer-master\FileExplorer\bin\Debug\netcoreapp2.0\FileExplorer.deps.json
+c:\Users\VasilevK\Desktop\FileExplorer-master\FileExplorer\bin\Debug\netcoreapp2.0\FileExplorer.runtimeconfig.json
+c:\Users\VasilevK\Desktop\FileExplorer-master\FileExplorer\bin\Debug\netcoreapp2.0\FileExplorer.runtimeconfig.dev.json
+c:\Users\VasilevK\Desktop\FileExplorer-master\FileExplorer\bin\Debug\netcoreapp2.0\FileExplorer.dll
+c:\Users\VasilevK\Desktop\FileExplorer-master\FileExplorer\bin\Debug\netcoreapp2.0\FileExplorer.pdb
+c:\Users\VasilevK\Desktop\FileExplorer-master\FileExplorer\obj\Debug\netcoreapp2.0\FileExplorer.csprojResolveAssemblyReference.cache
+c:\Users\VasilevK\Desktop\FileExplorer-master\FileExplorer\obj\Debug\netcoreapp2.0\FileExplorer.csproj.CoreCompileInputs.cache
+c:\Users\VasilevK\Desktop\FileExplorer-master\FileExplorer\obj\Debug\netcoreapp2.0\FileExplorer.AssemblyInfoInputs.cache
+c:\Users\VasilevK\Desktop\FileExplorer-master\FileExplorer\obj\Debug\netcoreapp2.0\FileExplorer.AssemblyInfo.cs
+c:\Users\VasilevK\Desktop\FileExplorer-master\FileExplorer\obj\Debug\netcoreapp2.0\FileExplorer.dll
+c:\Users\VasilevK\Desktop\FileExplorer-master\FileExplorer\obj\Debug\netcoreapp2.0\FileExplorer.pdb
