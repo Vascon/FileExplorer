@@ -37,6 +37,7 @@
 <script>
    let previous;
    let tr;
+   var table;
 
    function getInfo(path) {
         console.log('get info')
@@ -48,19 +49,12 @@
             type: "POST",
             contentType: 'application/json; charset=utf-8',
 
-
-    
             data: JSON.stringify(path),
             success: function (data) {
 
-                
-                window.alert = function() {}; 
 
                 $(".toDelete").remove();
                var tr='<tr></tr>';
-
-              // var Table = document.getElementById("mytable");
-              //  Table.innerHTML = "";
                
                 for (var i = 0; i < data.length; i++) 
                 {
@@ -81,37 +75,39 @@
 
     
                   tblFormate();
-                function tblFormate() {
-
-                var table = $('#tblDirectories').DataTable(
-                 {
-                    // "searching": false,
-                     "lengthMenu": [[5, 10, 50, 100, 150, -1], [5, 10, 50, 100, 150, "All"]]
-                 });
-
-
-                table.columns().eq(0).each(function (colIdx) {
-                    $('input', table.column(colIdx).header()).on('keyup change', function () {
-                        table
-                            .column(colIdx)
-                            .search(this.value)
-                            .draw();
+                function tblFormate() 
+                {      
+                    table = $('#tblDirectories').DataTable(
+                    {
+                        destroy: true,
+                        retrieve: true,
+                        paging: false,
+                        searching: false,
+                        ordering: false,
+                        info: false
+                        // "lengthMenu": [[5, 10, 50, 100, 150, -1], [5, 10, 50, 100, 150, "All"]]
                     });
-                });
-            }
-        
 
+
+                    table.columns().eq(0).each(function (colIdx) {
+                        $('input', table.column(colIdx).header()).on('keyup change', function () {
+                            table
+                                .column(colIdx)
+                                .search(this.value)
+                                .draw();
+                        });
+                    });
+                }     
             },
             error: function (xhr) {
                 console.error(xhr);
             }
         });
     }
-    $(document).ready(function () {
+    $(document).ready(function () 
+    {
         console.log('doc ready')
-
         getInfo();
-
     });
 
 
